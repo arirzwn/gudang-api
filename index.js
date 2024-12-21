@@ -1,14 +1,14 @@
 const { PrismaClient } = require("@prisma/client");
-import cors from "cors";
+const cors = require("cors");
 const express = require("express");
-import { config } from "dotenv";
+const { config } = require("dotenv");
 config();
 
 const prisma = new PrismaClient();
 const app = express();
 const port = process.env.PORT || 9000;
 
-app, use(express.json());
+app.use(express.json());
 app.use(
   cors({
     origin: "*",
