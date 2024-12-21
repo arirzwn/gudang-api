@@ -4,7 +4,13 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon server.js",
+    "vercel-build": "prisma generate && prisma migrate deploy",
+    "start": "node server.js",
+    "migrate:dev": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy",
+    "migrate:status": "prisma migrate status",
+    "generate": "prisma generate"
   },
   "keywords": [],
   "author": "",
