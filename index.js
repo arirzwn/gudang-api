@@ -1,11 +1,26 @@
-const express = require("express");
-const bodyParser = require("body-parser");
 const { PrismaClient } = require("@prisma/client");
+import cors from "cors";
+const express = require("express");
+import { config } from "dotenv";
+config();
 
 const prisma = new PrismaClient();
 const app = express();
+const port = process.env.PORT || 9000;
 
-app.use(bodyParser.json());
+app, use(express.json());
+app.use(
+  cors({
+    origin: "*",
+  }),
+);
+
+app.get("/", (req, res) => {
+  res.status(200).json({
+    status: "success",
+    message: "Berhasil!",
+  });
+});
 
 // 1. CREATE Gudang
 app.post("/gudang", async (req, res) => {
@@ -18,6 +33,13 @@ app.post("/gudang", async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+});
+
+app.get("/", (req, res) => {
+  res.status(200).json({
+    status: "success",
+    message: "Trustme Its Works",
+  });
 });
 
 // 2. READ Gudang (All & By ID)
@@ -70,6 +92,6 @@ app.delete("/gudang/:id", async (req, res) => {
 });
 
 // Start Server
-app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
