@@ -35,13 +35,6 @@ app.post("/gudang", async (req, res) => {
   }
 });
 
-app.get("/", (req, res) => {
-  res.status(200).json({
-    status: "success",
-    message: "Trustme Its Works",
-  });
-});
-
 // 2. READ Gudang (All & By ID)
 app.get("/gudang", async (req, res) => {
   try {
